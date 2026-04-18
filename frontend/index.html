@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Music Subscription Web App - Discover and subscribe to your favorite songs">
+  <title>SoundWave — Music Subscription</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <!-- LOGIN PAGE                                              -->
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <section id="login-page" class="auth-page">
+    <div class="auth-backdrop">
+      <div class="floating-note n1">♪</div>
+      <div class="floating-note n2">♫</div>
+      <div class="floating-note n3">♬</div>
+      <div class="floating-note n4">♩</div>
+      <div class="floating-note n5">♪</div>
+    </div>
+    <div class="auth-card glass">
+      <div class="auth-logo">
+        <div class="logo-icon">🎵</div>
+        <h1>SoundWave</h1>
+        <p class="tagline">Your Music, Your Way</p>
+      </div>
+      <form id="login-form" autocomplete="off">
+        <div class="input-group">
+          <label for="login-email">Email</label>
+          <input type="email" id="login-email" placeholder="you@example.com" required>
+        </div>
+        <div class="input-group">
+          <label for="login-password">Password</label>
+          <input type="password" id="login-password" placeholder="••••••••" required>
+        </div>
+        <button type="submit" id="login-btn" class="btn-primary">
+          <span class="btn-text">Sign In</span>
+          <span class="btn-loader" style="display:none;">⏳</span>
+        </button>
+        <div id="login-error" class="error-msg" style="display:none;"></div>
+      </form>
+      <p class="auth-switch">
+        Don't have an account? <a href="#" id="goto-register">Create one</a>
+      </p>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <!-- REGISTER PAGE                                           -->
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <section id="register-page" class="auth-page" style="display:none;">
+    <div class="auth-backdrop">
+      <div class="floating-note n1">♪</div>
+      <div class="floating-note n2">♫</div>
+      <div class="floating-note n3">♬</div>
+    </div>
+    <div class="auth-card glass">
+      <div class="auth-logo">
+        <div class="logo-icon">🎵</div>
+        <h1>Join SoundWave</h1>
+        <p class="tagline">Start your music journey</p>
+      </div>
+      <form id="register-form" autocomplete="off">
+        <div class="input-group">
+          <label for="reg-username">Username</label>
+          <input type="text" id="reg-username" placeholder="Your name" required>
+        </div>
+        <div class="input-group">
+          <label for="reg-email">Email</label>
+          <input type="email" id="reg-email" placeholder="you@example.com" required>
+        </div>
+        <div class="input-group">
+          <label for="reg-password">Password</label>
+          <input type="password" id="reg-password" placeholder="Min 6 characters" required minlength="6">
+        </div>
+        <button type="submit" id="register-btn" class="btn-primary">
+          <span class="btn-text">Create Account</span>
+          <span class="btn-loader" style="display:none;">⏳</span>
+        </button>
+        <div id="register-error" class="error-msg" style="display:none;"></div>
+        <div id="register-success" class="success-msg" style="display:none;"></div>
+      </form>
+      <p class="auth-switch">
+        Already have an account? <a href="#" id="goto-login">Sign in</a>
+      </p>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <!-- MAIN DASHBOARD                                          -->
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <section id="dashboard-page" style="display:none;">
+
+    <!-- ── Top Navigation ─────────────────────────────────── -->
+    <nav class="top-nav glass">
+      <div class="nav-left">
+        <div class="nav-logo">🎵</div>
+        <span class="nav-brand">SoundWave</span>
+      </div>
+      <div class="nav-right">
+        <span id="welcome-user" class="welcome-text">Welcome, User</span>
+        <button id="logout-btn" class="btn-outline btn-sm">Logout</button>
+      </div>
+    </nav>
+
+    <!-- ── Tab Navigation ─────────────────────────────────── -->
+    <div class="tab-nav">
+      <button id="tab-search" class="tab-btn active" data-tab="search">
+        🔍 Search Music
+      </button>
+      <button id="tab-subs" class="tab-btn" data-tab="subscriptions">
+        ❤️ My Subscriptions
+      </button>
+      <button id="tab-all" class="tab-btn" data-tab="all-songs">
+        🎵 All Songs
+      </button>
+    </div>
+
+    <!-- ── Search Tab Content ─────────────────────────────── -->
+    <div id="search-section" class="tab-content active">
+      <div class="search-container glass">
+        <h2>🔍 Search Songs</h2>
+        <p class="search-hint">Enter at least one field. Multiple fields use AND logic.</p>
+        <form id="search-form" class="search-grid">
+          <div class="input-group">
+            <label for="search-title">Title</label>
+            <input type="text" id="search-title" placeholder="Song title...">
+          </div>
+          <div class="input-group">
+            <label for="search-artist">Artist</label>
+            <input type="text" id="search-artist" placeholder="Artist name...">
+          </div>
+          <div class="input-group">
+            <label for="search-album">Album</label>
+            <input type="text" id="search-album" placeholder="Album name...">
+          </div>
+          <div class="input-group">
+            <label for="search-year">Year</label>
+            <input type="text" id="search-year" placeholder="e.g. 2023">
+          </div>
+          <button type="submit" id="search-btn" class="btn-primary btn-search">
+            <span class="btn-text">Search</span>
+            <span class="btn-loader" style="display:none;">⏳</span>
+          </button>
+        </form>
+      </div>
+
+      <div id="search-results" class="results-container">
+        <!-- Search results rendered here -->
+      </div>
+      <div id="no-results" class="empty-state" style="display:none;">
+        <div class="empty-icon">🎧</div>
+        <p>No songs found. Try different search criteria!</p>
+      </div>
+    </div>
+
+    <!-- ── Subscriptions Tab Content ──────────────────────── -->
+    <div id="subscriptions-section" class="tab-content" style="display:none;">
+      <div class="subs-header">
+        <h2>❤️ My Subscriptions</h2>
+        <p id="subs-count" class="subs-count">0 songs in your library</p>
+      </div>
+      <div id="subs-list" class="results-container">
+        <!-- Subscriptions rendered here -->
+      </div>
+      <div id="no-subs" class="empty-state" style="display:none;">
+        <div class="empty-icon">💿</div>
+        <p>No subscriptions yet. Search and add your favorite songs!</p>
+      </div>
+    </div>
+
+    <!-- ——— All Songs Tab Content ——— -->
+    <div id="all-songs-section" class="tab-content" style="display:none;">
+      <div class="subs-header">
+        <h2>🎵 All Songs</h2>
+        <p id="all-songs-count" class="subs-count">Loading songs...</p>
+      </div>
+      <div id="all-songs-list" class="results-container">
+        <!-- All songs rendered here -->
+      </div>
+      <div id="no-all-songs" class="empty-state" style="display:none;">
+        <div class="empty-icon">🎧</div>
+        <p>No songs found.</p>
+      </div>
+      <div class="pagination">
+        <button id="all-prev" class="btn-outline btn-sm" disabled>Prev</button>
+        <span id="all-page" class="page-indicator">Page 1</span>
+        <button id="all-next" class="btn-outline btn-sm" disabled>Next</button>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <!-- TOAST NOTIFICATION                                      -->
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <div id="toast" class="toast" style="display:none;">
+    <span id="toast-message"></span>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/api.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/dashboard.js"></script>
+</body>
+</html>
